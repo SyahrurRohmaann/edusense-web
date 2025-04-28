@@ -15,7 +15,7 @@ Route::get('/store', [HomeController::class, 'store']);
 
 // Auth routes (simplified for this example)
 
-Route::get('/download', function() {
+Route::get('/download', function () {
     return view('download');
 });
 
@@ -38,3 +38,33 @@ Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('adm
 
 //Halaman User
 Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+
+// nav Admin
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
+})->name('dashboard');
+
+Route::get('/admin/kelola-pengguna', function () {
+    return view('admin.kelola-pengguna');
+})->name('kelola-pengguna');
+
+Route::get('/admin/manajemen-soal', function () {
+    return view('admin.soal');
+})->name('manajemen-soal');
+
+Route::get('/admin/data-user', function () {
+    return view('data-user');
+})->name('data-user');
+
+Route::get('/admin/rekap-nilai', function () {
+    return view('rekap-nilai');
+})->name('rekap-nilai');
+
+Route::get('/admin/pengaturan', function () {
+    return view('pengaturan');
+})->name('pengaturan');
+
+Route::get('/logout', function () {
+    // Logika logout
+    return redirect('/login');
+})->name('logout');
