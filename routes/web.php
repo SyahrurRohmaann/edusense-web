@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Admin\RekapNilaiController;
 
 
 Route::get('/', [HomeController::class, 'index']);
@@ -21,7 +22,7 @@ Route::get('/download', function () {
 
 // Middleware
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
 Route::middleware(['auth', 'role:user'])->group(function () {
@@ -31,10 +32,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 // Halaman Login
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
-Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
-
-//Halaman Admin
-Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 
 //Halaman User
 Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
@@ -45,7 +43,7 @@ Route::get('/admin/dashboard', function () {
 })->name('dashboard');
 
 Route::get('/admin/kelola-pengguna', function () {
-    return view('admin.kelola-pengguna');
+    return view('admin.pengguna');
 })->name('kelola-pengguna');
 
 Route::get('/admin/manajemen-soal', function () {
@@ -53,18 +51,20 @@ Route::get('/admin/manajemen-soal', function () {
 })->name('manajemen-soal');
 
 Route::get('/admin/data-user', function () {
-    return view('data-user');
+    return view('admin.datauser');
 })->name('data-user');
 
-Route::get('/admin/rekap-nilai', function () {
-    return view('rekap-nilai');
-})->name('rekap-nilai');
+Route::get('/admin/rekap-nilai', [RekapNilaiController::class, 'index'])->name('rekap-nilai');
+
+// Route::get('/admin/rekap-nilai', function () {
+//     return view('admin.rekapnilai');
+// })->name('rekap-nilai');
 
 Route::get('/admin/pengaturan', function () {
-    return view('pengaturan');
+    return view('admin.pengaturan');
 })->name('pengaturan');
 
-Route::get('/logout', function () {
-    // Logika logout
-    return redirect('/login');
-})->name('logout');
+// Route::get('/logout', function () {
+//     // Logika logout
+//     return redirect('/login');
+// })->name('logout');
