@@ -12,8 +12,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     
-    <!-- Styles -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+   x <!-- Styles -->
+   @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+   <style>
+       .hero-section {
+           background-color: #12B886; /* Warna hijau muda */
+           padding: 80px 0;
+           margin-bottom: 2rem;
+           border-radius: 0 0 15px 15px;
+       }
+   </style>
+   @livewireStyles
 </head>
 <body>
     <header>
@@ -23,7 +33,7 @@
                     <svg width="30" height="30" viewBox="0 0 30 30" class="me-2">
                         <polygon points="15,0 30,15 15,30 0,15" fill="#000" />
                     </svg>
-                    Positivus
+                    Edusense
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -35,12 +45,6 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/about') }}">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/features') }}">Features</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/store') }}">Store</a>
                         </li>
                     </ul>
                     <div class="d-flex">
@@ -82,5 +86,6 @@
             <p class="text-center">&copy; {{ date('Y') }} Si Udin. All rights reserved.</p>
         </div>
     </footer>
+    @livewireScripts
 </body>
 </html>

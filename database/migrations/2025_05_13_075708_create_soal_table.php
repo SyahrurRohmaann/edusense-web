@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('soal', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->constrained('categories');
-            $table->string('image_url');
-            $table->string('jawaban');
-            $table->enum('tipe', ['teks', 'gambar'])->default('gambar'); // untuk jenis soal
-            $table->enum('tingkat_kesulitan', ['mudah', 'sedang', 'sulit']);
+            $table->foreignId('jenis_soal')->constrained('categories')->onDelete('cascade');
+            $table->string('judul_soal');
+            $table->string('gambar');
+            $table->string('pertanyaan'); // dalam menit
+            $table->string('jawaban'); // dalam menit
             $table->timestamps();
         });
     }

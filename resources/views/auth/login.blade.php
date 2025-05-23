@@ -146,7 +146,7 @@
 
         <p class="text-center text-sm text-gray-600 mt-4">
           Don't have an account?
-          <a href="#" class="text-green-500 hover:text-green-700 font-medium">Create Account</a>
+          <a href="{{ route('register') }}" class="text-green-500 hover:text-green-700 font-medium">Create Account</a>
         </p>
 
         <div class="flex items-center my-6">

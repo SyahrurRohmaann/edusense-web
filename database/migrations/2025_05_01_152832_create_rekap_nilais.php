@@ -9,11 +9,13 @@ return new class extends Migration {
     {
         Schema::create('rekap_nilais', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_anak');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('jenis_permainan');
             $table->integer('skor');
             $table->integer('waktu_bermain'); // dalam menit
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

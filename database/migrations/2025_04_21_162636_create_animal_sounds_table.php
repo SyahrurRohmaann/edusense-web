@@ -11,12 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('animal_sounds', function (Blueprint $table) {
+        Schema::create('daftar_hewan', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->string('nama_hewan');
-            $table->string('image_url'); // gambar hewan
-            $table->string('sound_url'); // file suara
+            $table->string('image_url'); // Gambar hewan
+            $table->string('sound_url'); // File suara
             $table->timestamps();
+
+            // Foreign key setelah kolom didefinisikan
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 
@@ -25,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('animal_sounds');
+        Schema::dropIfExists('daftar_hewan');
     }
 };

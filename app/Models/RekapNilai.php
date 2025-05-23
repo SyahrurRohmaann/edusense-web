@@ -15,4 +15,14 @@ class RekapNilai extends Model
         'skor',
         'waktu_bermain',
     ];
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function soal()
+    {
+        return $this->belongsTo(Soal::class, 'jenis_soal');
+    }
 }
