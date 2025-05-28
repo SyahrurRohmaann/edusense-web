@@ -10,12 +10,13 @@ class RekapNilai extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'nama_anak',
-        'jenis_permainan',
+        'jenis_soal',
         'skor',
         'waktu_bermain',
     ];
-    
+
     public function user()
     {
         return $this->belongsTo(User::class);
